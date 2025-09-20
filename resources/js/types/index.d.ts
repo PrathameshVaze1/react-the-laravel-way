@@ -41,10 +41,10 @@ export interface User {
     [key: string]: unknown; // This allows for additional properties...
 }
 
-export interface Puppy  {
+export interface Puppy {
     id: number;
     name: string;
     trait: string;
-    imageUrl: string;
+    imagerl: string;
     likedBy: User['id'][];
-};
+}

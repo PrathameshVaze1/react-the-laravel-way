@@ -4,19 +4,32 @@ import { NewPuppyForm } from '@/components/NewPuppyForm';
 import { PageWrapper } from '@/components/PageWrapper';
 import { PuppiesList } from '@/components/PuppiesList';
 import { Search } from '@/components/Search';
-import { Shortlist } from '@/components/Shortlist';
+import { ShortList } from '@/components/ShortList';
 
+import { getPuppies } from '@/queries';
+import { Puppy } from '@/types';
 import { LoaderCircle } from 'lucide-react';
 import { Suspense, use, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { getPuppies } from '@/queries';
-import { Puppy } from '@/types';
 
-export default function App() {
+export default function App({ puppies }: { puppies: Puppy[] }) {
     return (
         <PageWrapper>
             <Container>
                 <Header />
+                <ul className="mt-4 flex flex-wrap gap-4">
+                    {puppies.map((puppy) => (
+                        <li className="-ring-black/10 flex gap-2 bg-white p-6 ring">
+                            <img
+                                src={puppy.image_url}
+                                alt={puppy.name}
+                                className="size-12 rounded-full object-cover"
+                            />
+                            <h2>{puppy.name}</h2>
+                        </li>
+                    ))}
+                </ul>
+
                 <ErrorBoundary
                     fallbackRender={({ error }) => (
                         <div className="mt-12 bg-red-100 p-6 shadow ring ring-black/5">
@@ -56,7 +69,7 @@ function Main() {
                     searchQuery={searchQuery}
                     setSearchQuery={setSearchQuery}
                 />
-                <Shortlist puppies={puppies} setPuppies={setPuppies} />
+                <ShortList puppies={puppies} setPuppies={setPuppies} />
             </div>
             <PuppiesList
                 puppies={puppies}
