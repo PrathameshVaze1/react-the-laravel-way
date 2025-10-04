@@ -21,7 +21,7 @@ export default function App({ puppies }: { puppies: Puppy[] }) {
                     {puppies.map((puppy) => (
                         <li key={puppy.id} className="-ring-black/10 flex gap-2 bg-white p-6 ring">
                             <img
-                                src={puppy.image_url}
+                                src={puppy.imageUrl}
                                 alt={puppy.name}
                                 className="size-12 rounded-full object-cover"
                             />

@@ -1,12 +1,13 @@
 <?php
 
-use App\Models\Puppy;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\Puppy;
+use App\Http\Resources\PuppyResource;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return Inertia::render('welcome', [
-        'puppies' => Puppy::all()->load(['user']),
+        'puppies' => PuppyResource::collection(Puppy::all()->load(['user'])),
     ]);
 })->name('home');
 
