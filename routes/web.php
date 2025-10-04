@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return Inertia::render('welcome', [
-        'puppies' => PuppyResource::collection(Puppy::all()->load(['user'])),
+        'puppies' => PuppyResource::collection(Puppy::all()->load(['user', 'likedBy'])),
     ]);
 })->name('home');
 
