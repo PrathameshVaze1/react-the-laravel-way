@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Puppy;
 use App\Models\User;
+use App\Models\Puppy;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class PuppySeeder extends Seeder
 {
@@ -32,7 +33,7 @@ class PuppySeeder extends Seeder
                 'user_id' => $prathamesh->id,
                 'name' => $puppy['name'],
                 'trait' => $puppy['trait'],
-                'image_url' => '/images/'.$puppy['image'],
+                'image_url' => Storage::url('puppies/'.$puppy['image']),
             ]);
         }
     }
