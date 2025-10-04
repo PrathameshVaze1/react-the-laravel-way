@@ -1,9 +1,9 @@
 <?php
 
-use Inertia\Inertia;
-use App\Models\Puppy;
 use App\Http\Resources\PuppyResource;
+use App\Models\Puppy;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('welcome', [
