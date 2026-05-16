@@ -20,8 +20,6 @@ export default function App({ puppies }: { puppies: Puppy[] }) {
     );
 }
 
-const puppyPromise = getPuppies();
-
 function Main({ pups }: { pups: Puppy[] }) {
     const [searchQuery, setSearchQuery] = useState('');
     const [puppies, setPuppies] = useState<Puppy[]>(pups);
